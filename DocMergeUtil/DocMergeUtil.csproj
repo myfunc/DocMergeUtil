@@ -1,0 +1,1164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FE60B57A-73D9-4B72-AB35-2FC39AB74A03}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DocMergeUtil</RootNamespace>
+    <AssemblyName>DocMergeUtil</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>2</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Doc, Version=7.11.1.4046, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Doc.7.11.1\lib\net46\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.7.46, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Doc.7.11.1\lib\net46\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=5.11.0.2046, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Doc.7.11.1\lib\net46\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.0.1\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MacrosItem.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PathConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ico\accept.png" />
+    <Resource Include="ico\add.png" />
+    <Resource Include="ico\anchor.png" />
+    <Resource Include="ico\application.png" />
+    <Resource Include="ico\application_add.png" />
+    <Resource Include="ico\application_cascade.png" />
+    <Resource Include="ico\application_delete.png" />
+    <Resource Include="ico\application_double.png" />
+    <Resource Include="ico\application_edit.png" />
+    <Resource Include="ico\application_error.png" />
+    <Resource Include="ico\application_form.png" />
+    <Resource Include="ico\application_form_add.png" />
+    <Resource Include="ico\application_form_delete.png" />
+    <Resource Include="ico\application_form_edit.png" />
+    <Resource Include="ico\application_form_magnify.png" />
+    <Resource Include="ico\application_get.png" />
+    <Resource Include="ico\application_go.png" />
+    <Resource Include="ico\application_home.png" />
+    <Resource Include="ico\application_key.png" />
+    <Resource Include="ico\application_lightning.png" />
+    <Resource Include="ico\application_link.png" />
+    <Resource Include="ico\application_osx.png" />
+    <Resource Include="ico\application_osx_terminal.png" />
+    <Resource Include="ico\application_put.png" />
+    <Resource Include="ico\application_side_boxes.png" />
+    <Resource Include="ico\application_side_contract.png" />
+    <Resource Include="ico\application_side_expand.png" />
+    <Resource Include="ico\application_side_list.png" />
+    <Resource Include="ico\application_side_tree.png" />
+    <Resource Include="ico\application_split.png" />
+    <Resource Include="ico\application_tile_horizontal.png" />
+    <Resource Include="ico\application_tile_vertical.png" />
+    <Resource Include="ico\application_view_columns.png" />
+    <Resource Include="ico\application_view_detail.png" />
+    <Resource Include="ico\application_view_gallery.png" />
+    <Resource Include="ico\application_view_icons.png" />
+    <Resource Include="ico\application_view_list.png" />
+    <Resource Include="ico\application_view_tile.png" />
+    <Resource Include="ico\application_xp.png" />
+    <Resource Include="ico\application_xp_terminal.png" />
+    <Resource Include="ico\arrow_branch.png" />
+    <Resource Include="ico\arrow_divide.png" />
+    <Resource Include="ico\arrow_down.png" />
+    <Resource Include="ico\arrow_in.png" />
+    <Resource Include="ico\arrow_inout.png" />
+    <Resource Include="ico\arrow_join.png" />
+    <Resource Include="ico\arrow_left.png" />
+    <Resource Include="ico\arrow_merge.png" />
+    <Resource Include="ico\arrow_out.png" />
+    <Resource Include="ico\arrow_redo.png" />
+    <Resource Include="ico\arrow_refresh.png" />
+    <Resource Include="ico\arrow_refresh_small.png" />
+    <Resource Include="ico\arrow_right.png" />
+    <Resource Include="ico\arrow_rotate_anticlockwise.png" />
+    <Resource Include="ico\arrow_rotate_clockwise.png" />
+    <Resource Include="ico\arrow_switch.png" />
+    <Resource Include="ico\arrow_turn_left.png" />
+    <Resource Include="ico\arrow_turn_right.png" />
+    <Resource Include="ico\arrow_undo.png" />
+    <Resource Include="ico\arrow_up.png" />
+    <Resource Include="ico\asterisk_orange.png" />
+    <Resource Include="ico\asterisk_yellow.png" />
+    <Resource Include="ico\attach.png" />
+    <Resource Include="ico\award_star_add.png" />
+    <Resource Include="ico\award_star_bronze_1.png" />
+    <Resource Include="ico\award_star_bronze_2.png" />
+    <Resource Include="ico\award_star_bronze_3.png" />
+    <Resource Include="ico\award_star_delete.png" />
+    <Resource Include="ico\award_star_gold_1.png" />
+    <Resource Include="ico\award_star_gold_2.png" />
+    <Resource Include="ico\award_star_gold_3.png" />
+    <Resource Include="ico\award_star_silver_1.png" />
+    <Resource Include="ico\award_star_silver_2.png" />
+    <Resource Include="ico\award_star_silver_3.png" />
+    <Resource Include="ico\basket.png" />
+    <Resource Include="ico\basket_add.png" />
+    <Resource Include="ico\basket_delete.png" />
+    <Resource Include="ico\basket_edit.png" />
+    <Resource Include="ico\basket_error.png" />
+    <Resource Include="ico\basket_go.png" />
+    <Resource Include="ico\basket_put.png" />
+    <Resource Include="ico\basket_remove.png" />
+    <Resource Include="ico\bell.png" />
+    <Resource Include="ico\bell_add.png" />
+    <Resource Include="ico\bell_delete.png" />
+    <Resource Include="ico\bell_error.png" />
+    <Resource Include="ico\bell_go.png" />
+    <Resource Include="ico\bell_link.png" />
+    <Resource Include="ico\bin.png" />
+    <Resource Include="ico\bin_closed.png" />
+    <Resource Include="ico\bin_empty.png" />
+    <Resource Include="ico\bomb.png" />
+    <Resource Include="ico\book.png" />
+    <Resource Include="ico\book_add.png" />
+    <Resource Include="ico\book_addresses.png" />
+    <Resource Include="ico\book_delete.png" />
+    <Resource Include="ico\book_edit.png" />
+    <Resource Include="ico\book_error.png" />
+    <Resource Include="ico\book_go.png" />
+    <Resource Include="ico\book_key.png" />
+    <Resource Include="ico\book_link.png" />
+    <Resource Include="ico\book_next.png" />
+    <Resource Include="ico\book_open.png" />
+    <Resource Include="ico\book_previous.png" />
+    <Resource Include="ico\box.png" />
+    <Resource Include="ico\brick.png" />
+    <Resource Include="ico\bricks.png" />
+    <Resource Include="ico\brick_add.png" />
+    <Resource Include="ico\brick_delete.png" />
+    <Resource Include="ico\brick_edit.png" />
+    <Resource Include="ico\brick_error.png" />
+    <Resource Include="ico\brick_go.png" />
+    <Resource Include="ico\brick_link.png" />
+    <Resource Include="ico\briefcase.png" />
+    <Resource Include="ico\bug.png" />
+    <Resource Include="ico\bug_add.png" />
+    <Resource Include="ico\bug_delete.png" />
+    <Resource Include="ico\bug_edit.png" />
+    <Resource Include="ico\bug_error.png" />
+    <Resource Include="ico\bug_go.png" />
+    <Resource Include="ico\bug_link.png" />
+    <Resource Include="ico\building.png" />
+    <Resource Include="ico\building_add.png" />
+    <Resource Include="ico\building_delete.png" />
+    <Resource Include="ico\building_edit.png" />
+    <Resource Include="ico\building_error.png" />
+    <Resource Include="ico\building_go.png" />
+    <Resource Include="ico\building_key.png" />
+    <Resource Include="ico\building_link.png" />
+    <Resource Include="ico\bullet_add.png" />
+    <Resource Include="ico\bullet_arrow_bottom.png" />
+    <Resource Include="ico\bullet_arrow_down.png" />
+    <Resource Include="ico\bullet_arrow_top.png" />
+    <Resource Include="ico\bullet_arrow_up.png" />
+    <Resource Include="ico\bullet_black.png" />
+    <Resource Include="ico\bullet_blue.png" />
+    <Resource Include="ico\bullet_delete.png" />
+    <Resource Include="ico\bullet_disk.png" />
+    <Resource Include="ico\bullet_error.png" />
+    <Resource Include="ico\bullet_feed.png" />
+    <Resource Include="ico\bullet_go.png" />
+    <Resource Include="ico\bullet_green.png" />
+    <Resource Include="ico\bullet_key.png" />
+    <Resource Include="ico\bullet_orange.png" />
+    <Resource Include="ico\bullet_picture.png" />
+    <Resource Include="ico\bullet_pink.png" />
+    <Resource Include="ico\bullet_purple.png" />
+    <Resource Include="ico\bullet_red.png" />
+    <Resource Include="ico\bullet_star.png" />
+    <Resource Include="ico\bullet_toggle_minus.png" />
+    <Resource Include="ico\bullet_toggle_plus.png" />
+    <Resource Include="ico\bullet_white.png" />
+    <Resource Include="ico\bullet_wrench.png" />
+    <Resource Include="ico\bullet_yellow.png" />
+    <Resource Include="ico\cake.png" />
+    <Resource Include="ico\calculator.png" />
+    <Resource Include="ico\calculator_add.png" />
+    <Resource Include="ico\calculator_delete.png" />
+    <Resource Include="ico\calculator_edit.png" />
+    <Resource Include="ico\calculator_error.png" />
+    <Resource Include="ico\calculator_link.png" />
+    <Resource Include="ico\calendar.png" />
+    <Resource Include="ico\calendar_add.png" />
+    <Resource Include="ico\calendar_delete.png" />
+    <Resource Include="ico\calendar_edit.png" />
+    <Resource Include="ico\calendar_link.png" />
+    <Resource Include="ico\calendar_view_day.png" />
+    <Resource Include="ico\calendar_view_month.png" />
+    <Resource Include="ico\calendar_view_week.png" />
+    <Resource Include="ico\camera.png" />
+    <Resource Include="ico\camera_add.png" />
+    <Resource Include="ico\camera_delete.png" />
+    <Resource Include="ico\camera_edit.png" />
+    <Resource Include="ico\camera_error.png" />
+    <Resource Include="ico\camera_go.png" />
+    <Resource Include="ico\camera_link.png" />
+    <Resource Include="ico\camera_small.png" />
+    <Resource Include="ico\cancel.png" />
+    <Resource Include="ico\car.png" />
+    <Resource Include="ico\cart.png" />
+    <Resource Include="ico\cart_add.png" />
+    <Resource Include="ico\cart_delete.png" />
+    <Resource Include="ico\cart_edit.png" />
+    <Resource Include="ico\cart_error.png" />
+    <Resource Include="ico\cart_go.png" />
+    <Resource Include="ico\cart_put.png" />
+    <Resource Include="ico\cart_remove.png" />
+    <Resource Include="ico\car_add.png" />
+    <Resource Include="ico\car_delete.png" />
+    <Resource Include="ico\cd.png" />
+    <Resource Include="ico\cd_add.png" />
+    <Resource Include="ico\cd_burn.png" />
+    <Resource Include="ico\cd_delete.png" />
+    <Resource Include="ico\cd_edit.png" />
+    <Resource Include="ico\cd_eject.png" />
+    <Resource Include="ico\cd_go.png" />
+    <Resource Include="ico\chart_bar.png" />
+    <Resource Include="ico\chart_bar_add.png" />
+    <Resource Include="ico\chart_bar_delete.png" />
+    <Resource Include="ico\chart_bar_edit.png" />
+    <Resource Include="ico\chart_bar_error.png" />
+    <Resource Include="ico\chart_bar_link.png" />
+    <Resource Include="ico\chart_curve.png" />
+    <Resource Include="ico\chart_curve_add.png" />
+    <Resource Include="ico\chart_curve_delete.png" />
+    <Resource Include="ico\chart_curve_edit.png" />
+    <Resource Include="ico\chart_curve_error.png" />
+    <Resource Include="ico\chart_curve_go.png" />
+    <Resource Include="ico\chart_curve_link.png" />
+    <Resource Include="ico\chart_line.png" />
+    <Resource Include="ico\chart_line_add.png" />
+    <Resource Include="ico\chart_line_delete.png" />
+    <Resource Include="ico\chart_line_edit.png" />
+    <Resource Include="ico\chart_line_error.png" />
+    <Resource Include="ico\chart_line_link.png" />
+    <Resource Include="ico\chart_organisation.png" />
+    <Resource Include="ico\chart_organisation_add.png" />
+    <Resource Include="ico\chart_organisation_delete.png" />
+    <Resource Include="ico\chart_pie.png" />
+    <Resource Include="ico\chart_pie_add.png" />
+    <Resource Include="ico\chart_pie_delete.png" />
+    <Resource Include="ico\chart_pie_edit.png" />
+    <Resource Include="ico\chart_pie_error.png" />
+    <Resource Include="ico\chart_pie_link.png" />
+    <Resource Include="ico\clock.png" />
+    <Resource Include="ico\clock_add.png" />
+    <Resource Include="ico\clock_delete.png" />
+    <Resource Include="ico\clock_edit.png" />
+    <Resource Include="ico\clock_error.png" />
+    <Resource Include="ico\clock_go.png" />
+    <Resource Include="ico\clock_link.png" />
+    <Resource Include="ico\clock_pause.png" />
+    <Resource Include="ico\clock_play.png" />
+    <Resource Include="ico\clock_red.png" />
+    <Resource Include="ico\clock_stop.png" />
+    <Resource Include="ico\cog.png" />
+    <Resource Include="ico\cog_add.png" />
+    <Resource Include="ico\cog_delete.png" />
+    <Resource Include="ico\cog_edit.png" />
+    <Resource Include="ico\cog_error.png" />
+    <Resource Include="ico\cog_go.png" />
+    <Resource Include="ico\coins.png" />
+    <Resource Include="ico\coins_add.png" />
+    <Resource Include="ico\coins_delete.png" />
+    <Resource Include="ico\color_swatch.png" />
+    <Resource Include="ico\color_wheel.png" />
+    <Resource Include="ico\comment.png" />
+    <Resource Include="ico\comments.png" />
+    <Resource Include="ico\comments_add.png" />
+    <Resource Include="ico\comments_delete.png" />
+    <Resource Include="ico\comment_add.png" />
+    <Resource Include="ico\comment_delete.png" />
+    <Resource Include="ico\comment_edit.png" />
+    <Resource Include="ico\compress.png" />
+    <Resource Include="ico\computer.png" />
+    <Resource Include="ico\computer_add.png" />
+    <Resource Include="ico\computer_delete.png" />
+    <Resource Include="ico\computer_edit.png" />
+    <Resource Include="ico\computer_error.png" />
+    <Resource Include="ico\computer_go.png" />
+    <Resource Include="ico\computer_key.png" />
+    <Resource Include="ico\computer_link.png" />
+    <Resource Include="ico\connect.png" />
+    <Resource Include="ico\contrast.png" />
+    <Resource Include="ico\contrast_decrease.png" />
+    <Resource Include="ico\contrast_high.png" />
+    <Resource Include="ico\contrast_increase.png" />
+    <Resource Include="ico\contrast_low.png" />
+    <Resource Include="ico\controller.png" />
+    <Resource Include="ico\controller_add.png" />
+    <Resource Include="ico\controller_delete.png" />
+    <Resource Include="ico\controller_error.png" />
+    <Resource Include="ico\control_eject.png" />
+    <Resource Include="ico\control_eject_blue.png" />
+    <Resource Include="ico\control_end.png" />
+    <Resource Include="ico\control_end_blue.png" />
+    <Resource Include="ico\control_equalizer.png" />
+    <Resource Include="ico\control_equalizer_blue.png" />
+    <Resource Include="ico\control_fastforward.png" />
+    <Resource Include="ico\control_fastforward_blue.png" />
+    <Resource Include="ico\control_pause.png" />
+    <Resource Include="ico\control_pause_blue.png" />
+    <Resource Include="ico\control_play.png" />
+    <Resource Include="ico\control_play_blue.png" />
+    <Resource Include="ico\control_repeat.png" />
+    <Resource Include="ico\control_repeat_blue.png" />
+    <Resource Include="ico\control_rewind.png" />
+    <Resource Include="ico\control_rewind_blue.png" />
+    <Resource Include="ico\control_start.png" />
+    <Resource Include="ico\control_start_blue.png" />
+    <Resource Include="ico\control_stop.png" />
+    <Resource Include="ico\control_stop_blue.png" />
+    <Resource Include="ico\creditcards.png" />
+    <Resource Include="ico\cross.png" />
+    <Resource Include="ico\css.png" />
+    <Resource Include="ico\css_add.png" />
+    <Resource Include="ico\css_delete.png" />
+    <Resource Include="ico\css_go.png" />
+    <Resource Include="ico\css_valid.png" />
+    <Resource Include="ico\cup.png" />
+    <Resource Include="ico\cup_add.png" />
+    <Resource Include="ico\cup_delete.png" />
+    <Resource Include="ico\cup_edit.png" />
+    <Resource Include="ico\cup_error.png" />
+    <Resource Include="ico\cup_go.png" />
+    <Resource Include="ico\cup_key.png" />
+    <Resource Include="ico\cup_link.png" />
+    <Resource Include="ico\cursor.png" />
+    <Resource Include="ico\cut.png" />
+    <Resource Include="ico\cut_red.png" />
+    <Resource Include="ico\database.png" />
+    <Resource Include="ico\database_add.png" />
+    <Resource Include="ico\database_connect.png" />
+    <Resource Include="ico\database_delete.png" />
+    <Resource Include="ico\database_edit.png" />
+    <Resource Include="ico\database_error.png" />
+    <Resource Include="ico\database_gear.png" />
+    <Resource Include="ico\database_go.png" />
+    <Resource Include="ico\database_key.png" />
+    <Resource Include="ico\database_lightning.png" />
+    <Resource Include="ico\database_link.png" />
+    <Resource Include="ico\database_refresh.png" />
+    <Resource Include="ico\database_save.png" />
+    <Resource Include="ico\database_table.png" />
+    <Resource Include="ico\date.png" />
+    <Resource Include="ico\date_add.png" />
+    <Resource Include="ico\date_delete.png" />
+    <Resource Include="ico\date_edit.png" />
+    <Resource Include="ico\date_error.png" />
+    <Resource Include="ico\date_go.png" />
+    <Resource Include="ico\date_link.png" />
+    <Resource Include="ico\date_magnify.png" />
+    <Resource Include="ico\date_next.png" />
+    <Resource Include="ico\date_previous.png" />
+    <Resource Include="ico\delete.png" />
+    <Resource Include="ico\disconnect.png" />
+    <Resource Include="ico\disk.png" />
+    <Resource Include="ico\disk_multiple.png" />
+    <Resource Include="ico\door.png" />
+    <Resource Include="ico\door_in.png" />
+    <Resource Include="ico\door_open.png" />
+    <Resource Include="ico\door_out.png" />
+    <Resource Include="ico\drink.png" />
+    <Resource Include="ico\drink_empty.png" />
+    <Resource Include="ico\drive.png" />
+    <Resource Include="ico\drive_add.png" />
+    <Resource Include="ico\drive_burn.png" />
+    <Resource Include="ico\drive_cd.png" />
+    <Resource Include="ico\drive_cd_empty.png" />
+    <Resource Include="ico\drive_delete.png" />
+    <Resource Include="ico\drive_disk.png" />
+    <Resource Include="ico\drive_edit.png" />
+    <Resource Include="ico\drive_error.png" />
+    <Resource Include="ico\drive_go.png" />
+    <Resource Include="ico\drive_key.png" />
+    <Resource Include="ico\drive_link.png" />
+    <Resource Include="ico\drive_magnify.png" />
+    <Resource Include="ico\drive_network.png" />
+    <Resource Include="ico\drive_rename.png" />
+    <Resource Include="ico\drive_user.png" />
+    <Resource Include="ico\drive_web.png" />
+    <Resource Include="ico\dvd.png" />
+    <Resource Include="ico\dvd_add.png" />
+    <Resource Include="ico\dvd_delete.png" />
+    <Resource Include="ico\dvd_edit.png" />
+    <Resource Include="ico\dvd_error.png" />
+    <Resource Include="ico\dvd_go.png" />
+    <Resource Include="ico\dvd_key.png" />
+    <Resource Include="ico\dvd_link.png" />
+    <Resource Include="ico\email.png" />
+    <Resource Include="ico\email_add.png" />
+    <Resource Include="ico\email_attach.png" />
+    <Resource Include="ico\email_delete.png" />
+    <Resource Include="ico\email_edit.png" />
+    <Resource Include="ico\email_error.png" />
+    <Resource Include="ico\email_go.png" />
+    <Resource Include="ico\email_link.png" />
+    <Resource Include="ico\email_open.png" />
+    <Resource Include="ico\email_open_image.png" />
+    <Resource Include="ico\emoticon_evilgrin.png" />
+    <Resource Include="ico\emoticon_grin.png" />
+    <Resource Include="ico\emoticon_happy.png" />
+    <Resource Include="ico\emoticon_smile.png" />
+    <Resource Include="ico\emoticon_surprised.png" />
+    <Resource Include="ico\emoticon_tongue.png" />
+    <Resource Include="ico\emoticon_unhappy.png" />
+    <Resource Include="ico\emoticon_waii.png" />
+    <Resource Include="ico\emoticon_wink.png" />
+    <Resource Include="ico\error.png" />
+    <Resource Include="ico\error_add.png" />
+    <Resource Include="ico\error_delete.png" />
+    <Resource Include="ico\error_go.png" />
+    <Resource Include="ico\exclamation.png" />
+    <Resource Include="ico\eye.png" />
+    <Resource Include="ico\feed.png" />
+    <Resource Include="ico\feed_add.png" />
+    <Resource Include="ico\feed_delete.png" />
+    <Resource Include="ico\feed_disk.png" />
+    <Resource Include="ico\feed_edit.png" />
+    <Resource Include="ico\feed_error.png" />
+    <Resource Include="ico\feed_go.png" />
+    <Resource Include="ico\feed_key.png" />
+    <Resource Include="ico\feed_link.png" />
+    <Resource Include="ico\feed_magnify.png" />
+    <Resource Include="ico\female.png" />
+    <Resource Include="ico\film.png" />
+    <Resource Include="ico\film_add.png" />
+    <Resource Include="ico\film_delete.png" />
+    <Resource Include="ico\film_edit.png" />
+    <Resource Include="ico\film_error.png" />
+    <Resource Include="ico\film_go.png" />
+    <Resource Include="ico\film_key.png" />
+    <Resource Include="ico\film_link.png" />
+    <Resource Include="ico\film_save.png" />
+    <Resource Include="ico\find.png" />
+    <Resource Include="ico\flag_blue.png" />
+    <Resource Include="ico\flag_green.png" />
+    <Resource Include="ico\flag_orange.png" />
+    <Resource Include="ico\flag_pink.png" />
+    <Resource Include="ico\flag_purple.png" />
+    <Resource Include="ico\flag_red.png" />
+    <Resource Include="ico\flag_yellow.png" />
+    <Resource Include="ico\folder.png" />
+    <Resource Include="ico\folder_add.png" />
+    <Resource Include="ico\folder_bell.png" />
+    <Resource Include="ico\folder_brick.png" />
+    <Resource Include="ico\folder_bug.png" />
+    <Resource Include="ico\folder_camera.png" />
+    <Resource Include="ico\folder_database.png" />
+    <Resource Include="ico\folder_delete.png" />
+    <Resource Include="ico\folder_edit.png" />
+    <Resource Include="ico\folder_error.png" />
+    <Resource Include="ico\folder_explore.png" />
+    <Resource Include="ico\folder_feed.png" />
+    <Resource Include="ico\folder_find.png" />
+    <Resource Include="ico\folder_go.png" />
+    <Resource Include="ico\folder_heart.png" />
+    <Resource Include="ico\folder_image.png" />
+    <Resource Include="ico\folder_key.png" />
+    <Resource Include="ico\folder_lightbulb.png" />
+    <Resource Include="ico\folder_link.png" />
+    <Resource Include="ico\folder_magnify.png" />
+    <Resource Include="ico\folder_page.png" />
+    <Resource Include="ico\folder_page_white.png" />
+    <Resource Include="ico\folder_palette.png" />
+    <Resource Include="ico\folder_picture.png" />
+    <Resource Include="ico\folder_star.png" />
+    <Resource Include="ico\folder_table.png" />
+    <Resource Include="ico\folder_user.png" />
+    <Resource Include="ico\folder_wrench.png" />
+    <Resource Include="ico\font.png" />
+    <Resource Include="ico\font_add.png" />
+    <Resource Include="ico\font_delete.png" />
+    <Resource Include="ico\font_go.png" />
+    <Resource Include="ico\group.png" />
+    <Resource Include="ico\group_add.png" />
+    <Resource Include="ico\group_delete.png" />
+    <Resource Include="ico\group_edit.png" />
+    <Resource Include="ico\group_error.png" />
+    <Resource Include="ico\group_gear.png" />
+    <Resource Include="ico\group_go.png" />
+    <Resource Include="ico\group_key.png" />
+    <Resource Include="ico\group_link.png" />
+    <Resource Include="ico\heart.png" />
+    <Resource Include="ico\heart_add.png" />
+    <Resource Include="ico\heart_delete.png" />
+    <Resource Include="ico\help.png" />
+    <Resource Include="ico\hourglass.png" />
+    <Resource Include="ico\hourglass_add.png" />
+    <Resource Include="ico\hourglass_delete.png" />
+    <Resource Include="ico\hourglass_go.png" />
+    <Resource Include="ico\hourglass_link.png" />
+    <Resource Include="ico\house.png" />
+    <Resource Include="ico\house_go.png" />
+    <Resource Include="ico\house_link.png" />
+    <Resource Include="ico\html.png" />
+    <Resource Include="ico\html_add.png" />
+    <Resource Include="ico\html_delete.png" />
+    <Resource Include="ico\html_go.png" />
+    <Resource Include="ico\html_valid.png" />
+    <Resource Include="ico\image.png" />
+    <Resource Include="ico\images.png" />
+    <Resource Include="ico\image_add.png" />
+    <Resource Include="ico\image_delete.png" />
+    <Resource Include="ico\image_edit.png" />
+    <Resource Include="ico\image_link.png" />
+    <Resource Include="ico\information.png" />
+    <Resource Include="ico\ipod.png" />
+    <Resource Include="ico\ipod_cast.png" />
+    <Resource Include="ico\ipod_cast_add.png" />
+    <Resource Include="ico\ipod_cast_delete.png" />
+    <Resource Include="ico\ipod_sound.png" />
+    <Resource Include="ico\joystick.png" />
+    <Resource Include="ico\joystick_add.png" />
+    <Resource Include="ico\joystick_delete.png" />
+    <Resource Include="ico\joystick_error.png" />
+    <Resource Include="ico\key.png" />
+    <Resource Include="ico\keyboard.png" />
+    <Resource Include="ico\keyboard_add.png" />
+    <Resource Include="ico\keyboard_delete.png" />
+    <Resource Include="ico\keyboard_magnify.png" />
+    <Resource Include="ico\key_add.png" />
+    <Resource Include="ico\key_delete.png" />
+    <Resource Include="ico\key_go.png" />
+    <Resource Include="ico\layers.png" />
+    <Resource Include="ico\layout.png" />
+    <Resource Include="ico\layout_add.png" />
+    <Resource Include="ico\layout_content.png" />
+    <Resource Include="ico\layout_delete.png" />
+    <Resource Include="ico\layout_edit.png" />
+    <Resource Include="ico\layout_error.png" />
+    <Resource Include="ico\layout_header.png" />
+    <Resource Include="ico\layout_link.png" />
+    <Resource Include="ico\layout_sidebar.png" />
+    <Resource Include="ico\lightbulb.png" />
+    <Resource Include="ico\lightbulb_add.png" />
+    <Resource Include="ico\lightbulb_delete.png" />
+    <Resource Include="ico\lightbulb_off.png" />
+    <Resource Include="ico\lightning.png" />
+    <Resource Include="ico\lightning_add.png" />
+    <Resource Include="ico\lightning_delete.png" />
+    <Resource Include="ico\lightning_go.png" />
+    <Resource Include="ico\link.png" />
+    <Resource Include="ico\link_add.png" />
+    <Resource Include="ico\link_break.png" />
+    <Resource Include="ico\link_delete.png" />
+    <Resource Include="ico\link_edit.png" />
+    <Resource Include="ico\link_error.png" />
+    <Resource Include="ico\link_go.png" />
+    <Resource Include="ico\lock.png" />
+    <Resource Include="ico\lock_add.png" />
+    <Resource Include="ico\lock_break.png" />
+    <Resource Include="ico\lock_delete.png" />
+    <Resource Include="ico\lock_edit.png" />
+    <Resource Include="ico\lock_go.png" />
+    <Resource Include="ico\lock_open.png" />
+    <Resource Include="ico\lorry.png" />
+    <Resource Include="ico\lorry_add.png" />
+    <Resource Include="ico\lorry_delete.png" />
+    <Resource Include="ico\lorry_error.png" />
+    <Resource Include="ico\lorry_flatbed.png" />
+    <Resource Include="ico\lorry_go.png" />
+    <Resource Include="ico\lorry_link.png" />
+    <Resource Include="ico\magifier_zoom_out.png" />
+    <Resource Include="ico\magnifier.png" />
+    <Resource Include="ico\magnifier_zoom_in.png" />
+    <Resource Include="ico\male.png" />
+    <Resource Include="ico\map.png" />
+    <Resource Include="ico\map_add.png" />
+    <Resource Include="ico\map_delete.png" />
+    <Resource Include="ico\map_edit.png" />
+    <Resource Include="ico\map_go.png" />
+    <Resource Include="ico\map_magnify.png" />
+    <Resource Include="ico\medal_bronze_1.png" />
+    <Resource Include="ico\medal_bronze_2.png" />
+    <Resource Include="ico\medal_bronze_3.png" />
+    <Resource Include="ico\medal_bronze_add.png" />
+    <Resource Include="ico\medal_bronze_delete.png" />
+    <Resource Include="ico\medal_gold_1.png" />
+    <Resource Include="ico\medal_gold_2.png" />
+    <Resource Include="ico\medal_gold_3.png" />
+    <Resource Include="ico\medal_gold_add.png" />
+    <Resource Include="ico\medal_gold_delete.png" />
+    <Resource Include="ico\medal_silver_1.png" />
+    <Resource Include="ico\medal_silver_2.png" />
+    <Resource Include="ico\medal_silver_3.png" />
+    <Resource Include="ico\medal_silver_add.png" />
+    <Resource Include="ico\medal_silver_delete.png" />
+    <Resource Include="ico\money.png" />
+    <Resource Include="ico\money_add.png" />
+    <Resource Include="ico\money_delete.png" />
+    <Resource Include="ico\money_dollar.png" />
+    <Resource Include="ico\money_euro.png" />
+    <Resource Include="ico\money_pound.png" />
+    <Resource Include="ico\money_yen.png" />
+    <Resource Include="ico\monitor.png" />
+    <Resource Include="ico\monitor_add.png" />
+    <Resource Include="ico\monitor_delete.png" />
+    <Resource Include="ico\monitor_edit.png" />
+    <Resource Include="ico\monitor_error.png" />
+    <Resource Include="ico\monitor_go.png" />
+    <Resource Include="ico\monitor_lightning.png" />
+    <Resource Include="ico\monitor_link.png" />
+    <Resource Include="ico\mouse.png" />
+    <Resource Include="ico\mouse_add.png" />
+    <Resource Include="ico\mouse_delete.png" />
+    <Resource Include="ico\mouse_error.png" />
+    <Resource Include="ico\music.png" />
+    <Resource Include="ico\new.png" />
+    <Resource Include="ico\newspaper.png" />
+    <Resource Include="ico\newspaper_add.png" />
+    <Resource Include="ico\newspaper_delete.png" />
+    <Resource Include="ico\newspaper_go.png" />
+    <Resource Include="ico\newspaper_link.png" />
+    <Resource Include="ico\note.png" />
+    <Resource Include="ico\note_add.png" />
+    <Resource Include="ico\note_delete.png" />
+    <Resource Include="ico\note_edit.png" />
+    <Resource Include="ico\note_error.png" />
+    <Resource Include="ico\note_go.png" />
+    <Resource Include="ico\overlays.png" />
+    <Resource Include="ico\package.png" />
+    <Resource Include="ico\package_add.png" />
+    <Resource Include="ico\package_delete.png" />
+    <Resource Include="ico\package_go.png" />
+    <Resource Include="ico\package_green.png" />
+    <Resource Include="ico\package_link.png" />
+    <Resource Include="ico\page.png" />
+    <Resource Include="ico\page_add.png" />
+    <Resource Include="ico\page_attach.png" />
+    <Resource Include="ico\page_code.png" />
+    <Resource Include="ico\page_copy.png" />
+    <Resource Include="ico\page_delete.png" />
+    <Resource Include="ico\page_edit.png" />
+    <Resource Include="ico\page_error.png" />
+    <Resource Include="ico\page_excel.png" />
+    <Resource Include="ico\page_find.png" />
+    <Resource Include="ico\page_gear.png" />
+    <Resource Include="ico\page_go.png" />
+    <Resource Include="ico\page_green.png" />
+    <Resource Include="ico\page_key.png" />
+    <Resource Include="ico\page_lightning.png" />
+    <Resource Include="ico\page_link.png" />
+    <Resource Include="ico\page_paintbrush.png" />
+    <Resource Include="ico\page_paste.png" />
+    <Resource Include="ico\page_red.png" />
+    <Resource Include="ico\page_refresh.png" />
+    <Resource Include="ico\page_save.png" />
+    <Resource Include="ico\page_white.png" />
+    <Resource Include="ico\page_white_acrobat.png" />
+    <Resource Include="ico\page_white_actionscript.png" />
+    <Resource Include="ico\page_white_add.png" />
+    <Resource Include="ico\page_white_c.png" />
+    <Resource Include="ico\page_white_camera.png" />
+    <Resource Include="ico\page_white_cd.png" />
+    <Resource Include="ico\page_white_code.png" />
+    <Resource Include="ico\page_white_code_red.png" />
+    <Resource Include="ico\page_white_coldfusion.png" />
+    <Resource Include="ico\page_white_compressed.png" />
+    <Resource Include="ico\page_white_copy.png" />
+    <Resource Include="ico\page_white_cplusplus.png" />
+    <Resource Include="ico\page_white_csharp.png" />
+    <Resource Include="ico\page_white_cup.png" />
+    <Resource Include="ico\page_white_database.png" />
+    <Resource Include="ico\page_white_delete.png" />
+    <Resource Include="ico\page_white_dvd.png" />
+    <Resource Include="ico\page_white_edit.png" />
+    <Resource Include="ico\page_white_error.png" />
+    <Resource Include="ico\page_white_excel.png" />
+    <Resource Include="ico\page_white_find.png" />
+    <Resource Include="ico\page_white_flash.png" />
+    <Resource Include="ico\page_white_freehand.png" />
+    <Resource Include="ico\page_white_gear.png" />
+    <Resource Include="ico\page_white_get.png" />
+    <Resource Include="ico\page_white_go.png" />
+    <Resource Include="ico\page_white_h.png" />
+    <Resource Include="ico\page_white_horizontal.png" />
+    <Resource Include="ico\page_white_key.png" />
+    <Resource Include="ico\page_white_lightning.png" />
+    <Resource Include="ico\page_white_link.png" />
+    <Resource Include="ico\page_white_magnify.png" />
+    <Resource Include="ico\page_white_medal.png" />
+    <Resource Include="ico\page_white_office.png" />
+    <Resource Include="ico\page_white_paint.png" />
+    <Resource Include="ico\page_white_paintbrush.png" />
+    <Resource Include="ico\page_white_paste.png" />
+    <Resource Include="ico\page_white_php.png" />
+    <Resource Include="ico\page_white_picture.png" />
+    <Resource Include="ico\page_white_powerpoint.png" />
+    <Resource Include="ico\page_white_put.png" />
+    <Resource Include="ico\page_white_ruby.png" />
+    <Resource Include="ico\page_white_stack.png" />
+    <Resource Include="ico\page_white_star.png" />
+    <Resource Include="ico\page_white_swoosh.png" />
+    <Resource Include="ico\page_white_text.png" />
+    <Resource Include="ico\page_white_text_width.png" />
+    <Resource Include="ico\page_white_tux.png" />
+    <Resource Include="ico\page_white_vector.png" />
+    <Resource Include="ico\page_white_visualstudio.png" />
+    <Resource Include="ico\page_white_width.png" />
+    <Resource Include="ico\page_white_word.png" />
+    <Resource Include="ico\page_white_world.png" />
+    <Resource Include="ico\page_white_wrench.png" />
+    <Resource Include="ico\page_white_zip.png" />
+    <Resource Include="ico\page_word.png" />
+    <Resource Include="ico\page_world.png" />
+    <Resource Include="ico\paintbrush.png" />
+    <Resource Include="ico\paintcan.png" />
+    <Resource Include="ico\palette.png" />
+    <Resource Include="ico\paste_plain.png" />
+    <Resource Include="ico\paste_word.png" />
+    <Resource Include="ico\pencil.png" />
+    <Resource Include="ico\pencil_add.png" />
+    <Resource Include="ico\pencil_delete.png" />
+    <Resource Include="ico\pencil_go.png" />
+    <Resource Include="ico\phone.png" />
+    <Resource Include="ico\phone_add.png" />
+    <Resource Include="ico\phone_delete.png" />
+    <Resource Include="ico\phone_sound.png" />
+    <Resource Include="ico\photo.png" />
+    <Resource Include="ico\photos.png" />
+    <Resource Include="ico\photo_add.png" />
+    <Resource Include="ico\photo_delete.png" />
+    <Resource Include="ico\photo_link.png" />
+    <Resource Include="ico\picture.png" />
+    <Resource Include="ico\pictures.png" />
+    <Resource Include="ico\picture_add.png" />
+    <Resource Include="ico\picture_delete.png" />
+    <Resource Include="ico\picture_edit.png" />
+    <Resource Include="ico\picture_empty.png" />
+    <Resource Include="ico\picture_error.png" />
+    <Resource Include="ico\picture_go.png" />
+    <Resource Include="ico\picture_key.png" />
+    <Resource Include="ico\picture_link.png" />
+    <Resource Include="ico\picture_save.png" />
+    <Resource Include="ico\pilcrow.png" />
+    <Resource Include="ico\pill.png" />
+    <Resource Include="ico\pill_add.png" />
+    <Resource Include="ico\pill_delete.png" />
+    <Resource Include="ico\pill_go.png" />
+    <Resource Include="ico\plugin.png" />
+    <Resource Include="ico\plugin_add.png" />
+    <Resource Include="ico\plugin_delete.png" />
+    <Resource Include="ico\plugin_disabled.png" />
+    <Resource Include="ico\plugin_edit.png" />
+    <Resource Include="ico\plugin_error.png" />
+    <Resource Include="ico\plugin_go.png" />
+    <Resource Include="ico\plugin_link.png" />
+    <Resource Include="ico\printer.png" />
+    <Resource Include="ico\printer_add.png" />
+    <Resource Include="ico\printer_delete.png" />
+    <Resource Include="ico\printer_empty.png" />
+    <Resource Include="ico\printer_error.png" />
+    <Resource Include="ico\rainbow.png" />
+    <Resource Include="ico\report.png" />
+    <Resource Include="ico\report_add.png" />
+    <Resource Include="ico\report_delete.png" />
+    <Resource Include="ico\report_disk.png" />
+    <Resource Include="ico\report_edit.png" />
+    <Resource Include="ico\report_go.png" />
+    <Resource Include="ico\report_key.png" />
+    <Resource Include="ico\report_link.png" />
+    <Resource Include="ico\report_magnify.png" />
+    <Resource Include="ico\report_picture.png" />
+    <Resource Include="ico\report_user.png" />
+    <Resource Include="ico\report_word.png" />
+    <Resource Include="ico\resultset_first.png" />
+    <Resource Include="ico\resultset_last.png" />
+    <Resource Include="ico\resultset_next.png" />
+    <Resource Include="ico\resultset_previous.png" />
+    <Resource Include="ico\rosette.png" />
+    <Resource Include="ico\rss.png" />
+    <Resource Include="ico\rss_add.png" />
+    <Resource Include="ico\rss_delete.png" />
+    <Resource Include="ico\rss_go.png" />
+    <Resource Include="ico\rss_valid.png" />
+    <Resource Include="ico\ruby.png" />
+    <Resource Include="ico\ruby_add.png" />
+    <Resource Include="ico\ruby_delete.png" />
+    <Resource Include="ico\ruby_gear.png" />
+    <Resource Include="ico\ruby_get.png" />
+    <Resource Include="ico\ruby_go.png" />
+    <Resource Include="ico\ruby_key.png" />
+    <Resource Include="ico\ruby_link.png" />
+    <Resource Include="ico\ruby_put.png" />
+    <Resource Include="ico\script.png" />
+    <Resource Include="ico\script_add.png" />
+    <Resource Include="ico\script_code.png" />
+    <Resource Include="ico\script_code_red.png" />
+    <Resource Include="ico\script_delete.png" />
+    <Resource Include="ico\script_edit.png" />
+    <Resource Include="ico\script_error.png" />
+    <Resource Include="ico\script_gear.png" />
+    <Resource Include="ico\script_go.png" />
+    <Resource Include="ico\script_key.png" />
+    <Resource Include="ico\script_lightning.png" />
+    <Resource Include="ico\script_link.png" />
+    <Resource Include="ico\script_palette.png" />
+    <Resource Include="ico\script_save.png" />
+    <Resource Include="ico\server.png" />
+    <Resource Include="ico\server_add.png" />
+    <Resource Include="ico\server_chart.png" />
+    <Resource Include="ico\server_compressed.png" />
+    <Resource Include="ico\server_connect.png" />
+    <Resource Include="ico\server_database.png" />
+    <Resource Include="ico\server_delete.png" />
+    <Resource Include="ico\server_edit.png" />
+    <Resource Include="ico\server_error.png" />
+    <Resource Include="ico\server_go.png" />
+    <Resource Include="ico\server_key.png" />
+    <Resource Include="ico\server_lightning.png" />
+    <Resource Include="ico\server_link.png" />
+    <Resource Include="ico\server_uncompressed.png" />
+    <Resource Include="ico\shading.png" />
+    <Resource Include="ico\shape_align_bottom.png" />
+    <Resource Include="ico\shape_align_center.png" />
+    <Resource Include="ico\shape_align_left.png" />
+    <Resource Include="ico\shape_align_middle.png" />
+    <Resource Include="ico\shape_align_right.png" />
+    <Resource Include="ico\shape_align_top.png" />
+    <Resource Include="ico\shape_flip_horizontal.png" />
+    <Resource Include="ico\shape_flip_vertical.png" />
+    <Resource Include="ico\shape_group.png" />
+    <Resource Include="ico\shape_handles.png" />
+    <Resource Include="ico\shape_move_back.png" />
+    <Resource Include="ico\shape_move_backwards.png" />
+    <Resource Include="ico\shape_move_forwards.png" />
+    <Resource Include="ico\shape_move_front.png" />
+    <Resource Include="ico\shape_rotate_anticlockwise.png" />
+    <Resource Include="ico\shape_rotate_clockwise.png" />
+    <Resource Include="ico\shape_square.png" />
+    <Resource Include="ico\shape_square_add.png" />
+    <Resource Include="ico\shape_square_delete.png" />
+    <Resource Include="ico\shape_square_edit.png" />
+    <Resource Include="ico\shape_square_error.png" />
+    <Resource Include="ico\shape_square_go.png" />
+    <Resource Include="ico\shape_square_key.png" />
+    <Resource Include="ico\shape_square_link.png" />
+    <Resource Include="ico\shape_ungroup.png" />
+    <Resource Include="ico\shield.png" />
+    <Resource Include="ico\shield_add.png" />
+    <Resource Include="ico\shield_delete.png" />
+    <Resource Include="ico\shield_go.png" />
+    <Resource Include="ico\sitemap.png" />
+    <Resource Include="ico\sitemap_color.png" />
+    <Resource Include="ico\sound.png" />
+    <Resource Include="ico\sound_add.png" />
+    <Resource Include="ico\sound_delete.png" />
+    <Resource Include="ico\sound_low.png" />
+    <Resource Include="ico\sound_mute.png" />
+    <Resource Include="ico\sound_none.png" />
+    <Resource Include="ico\spellcheck.png" />
+    <Resource Include="ico\sport_8ball.png" />
+    <Resource Include="ico\sport_basketball.png" />
+    <Resource Include="ico\sport_football.png" />
+    <Resource Include="ico\sport_golf.png" />
+    <Resource Include="ico\sport_raquet.png" />
+    <Resource Include="ico\sport_shuttlecock.png" />
+    <Resource Include="ico\sport_soccer.png" />
+    <Resource Include="ico\sport_tennis.png" />
+    <Resource Include="ico\star.png" />
+    <Resource Include="ico\status_away.png" />
+    <Resource Include="ico\status_busy.png" />
+    <Resource Include="ico\status_offline.png" />
+    <Resource Include="ico\status_online.png" />
+    <Resource Include="ico\stop.png" />
+    <Resource Include="ico\style.png" />
+    <Resource Include="ico\style_add.png" />
+    <Resource Include="ico\style_delete.png" />
+    <Resource Include="ico\style_edit.png" />
+    <Resource Include="ico\style_go.png" />
+    <Resource Include="ico\sum.png" />
+    <Resource Include="ico\tab.png" />
+    <Resource Include="ico\table.png" />
+    <Resource Include="ico\table_add.png" />
+    <Resource Include="ico\table_delete.png" />
+    <Resource Include="ico\table_edit.png" />
+    <Resource Include="ico\table_error.png" />
+    <Resource Include="ico\table_gear.png" />
+    <Resource Include="ico\table_go.png" />
+    <Resource Include="ico\table_key.png" />
+    <Resource Include="ico\table_lightning.png" />
+    <Resource Include="ico\table_link.png" />
+    <Resource Include="ico\table_multiple.png" />
+    <Resource Include="ico\table_refresh.png" />
+    <Resource Include="ico\table_relationship.png" />
+    <Resource Include="ico\table_row_delete.png" />
+    <Resource Include="ico\table_row_insert.png" />
+    <Resource Include="ico\table_save.png" />
+    <Resource Include="ico\table_sort.png" />
+    <Resource Include="ico\tab_add.png" />
+    <Resource Include="ico\tab_delete.png" />
+    <Resource Include="ico\tab_edit.png" />
+    <Resource Include="ico\tab_go.png" />
+    <Resource Include="ico\tag.png" />
+    <Resource Include="ico\tag_blue.png" />
+    <Resource Include="ico\tag_blue_add.png" />
+    <Resource Include="ico\tag_blue_delete.png" />
+    <Resource Include="ico\tag_blue_edit.png" />
+    <Resource Include="ico\tag_green.png" />
+    <Resource Include="ico\tag_orange.png" />
+    <Resource Include="ico\tag_pink.png" />
+    <Resource Include="ico\tag_purple.png" />
+    <Resource Include="ico\tag_red.png" />
+    <Resource Include="ico\tag_yellow.png" />
+    <Resource Include="ico\telephone.png" />
+    <Resource Include="ico\telephone_add.png" />
+    <Resource Include="ico\telephone_delete.png" />
+    <Resource Include="ico\telephone_edit.png" />
+    <Resource Include="ico\telephone_error.png" />
+    <Resource Include="ico\telephone_go.png" />
+    <Resource Include="ico\telephone_key.png" />
+    <Resource Include="ico\telephone_link.png" />
+    <Resource Include="ico\television.png" />
+    <Resource Include="ico\television_add.png" />
+    <Resource Include="ico\television_delete.png" />
+    <Resource Include="ico\textfield.png" />
+    <Resource Include="ico\textfield_add.png" />
+    <Resource Include="ico\textfield_delete.png" />
+    <Resource Include="ico\textfield_key.png" />
+    <Resource Include="ico\textfield_rename.png" />
+    <Resource Include="ico\text_align_center.png" />
+    <Resource Include="ico\text_align_justify.png" />
+    <Resource Include="ico\text_align_left.png" />
+    <Resource Include="ico\text_align_right.png" />
+    <Resource Include="ico\text_allcaps.png" />
+    <Resource Include="ico\text_bold.png" />
+    <Resource Include="ico\text_columns.png" />
+    <Resource Include="ico\text_dropcaps.png" />
+    <Resource Include="ico\text_heading_1.png" />
+    <Resource Include="ico\text_heading_2.png" />
+    <Resource Include="ico\text_heading_3.png" />
+    <Resource Include="ico\text_heading_4.png" />
+    <Resource Include="ico\text_heading_5.png" />
+    <Resource Include="ico\text_heading_6.png" />
+    <Resource Include="ico\text_horizontalrule.png" />
+    <Resource Include="ico\text_indent.png" />
+    <Resource Include="ico\text_indent_remove.png" />
+    <Resource Include="ico\text_italic.png" />
+    <Resource Include="ico\text_kerning.png" />
+    <Resource Include="ico\text_letterspacing.png" />
+    <Resource Include="ico\text_letter_omega.png" />
+    <Resource Include="ico\text_linespacing.png" />
+    <Resource Include="ico\text_list_bullets.png" />
+    <Resource Include="ico\text_list_numbers.png" />
+    <Resource Include="ico\text_lowercase.png" />
+    <Resource Include="ico\text_padding_bottom.png" />
+    <Resource Include="ico\text_padding_left.png" />
+    <Resource Include="ico\text_padding_right.png" />
+    <Resource Include="ico\text_padding_top.png" />
+    <Resource Include="ico\text_replace.png" />
+    <Resource Include="ico\text_signature.png" />
+    <Resource Include="ico\text_smallcaps.png" />
+    <Resource Include="ico\text_strikethrough.png" />
+    <Resource Include="ico\text_subscript.png" />
+    <Resource Include="ico\text_superscript.png" />
+    <Resource Include="ico\text_underline.png" />
+    <Resource Include="ico\text_uppercase.png" />
+    <Resource Include="ico\thumb_down.png" />
+    <Resource Include="ico\thumb_up.png" />
+    <Resource Include="ico\tick.png" />
+    <Resource Include="ico\time.png" />
+    <Resource Include="ico\timeline_marker.png" />
+    <Resource Include="ico\time_add.png" />
+    <Resource Include="ico\time_delete.png" />
+    <Resource Include="ico\time_go.png" />
+    <Resource Include="ico\transmit.png" />
+    <Resource Include="ico\transmit_add.png" />
+    <Resource Include="ico\transmit_blue.png" />
+    <Resource Include="ico\transmit_delete.png" />
+    <Resource Include="ico\transmit_edit.png" />
+    <Resource Include="ico\transmit_error.png" />
+    <Resource Include="ico\transmit_go.png" />
+    <Resource Include="ico\tux.png" />
+    <Resource Include="ico\user.png" />
+    <Resource Include="ico\user_add.png" />
+    <Resource Include="ico\user_comment.png" />
+    <Resource Include="ico\user_delete.png" />
+    <Resource Include="ico\user_edit.png" />
+    <Resource Include="ico\user_female.png" />
+    <Resource Include="ico\user_go.png" />
+    <Resource Include="ico\user_gray.png" />
+    <Resource Include="ico\user_green.png" />
+    <Resource Include="ico\user_orange.png" />
+    <Resource Include="ico\user_red.png" />
+    <Resource Include="ico\user_suit.png" />
+    <Resource Include="ico\vcard.png" />
+    <Resource Include="ico\vcard_add.png" />
+    <Resource Include="ico\vcard_delete.png" />
+    <Resource Include="ico\vcard_edit.png" />
+    <Resource Include="ico\vector.png" />
+    <Resource Include="ico\vector_add.png" />
+    <Resource Include="ico\vector_delete.png" />
+    <Resource Include="ico\wand.png" />
+    <Resource Include="ico\weather_clouds.png" />
+    <Resource Include="ico\weather_cloudy.png" />
+    <Resource Include="ico\weather_lightning.png" />
+    <Resource Include="ico\weather_rain.png" />
+    <Resource Include="ico\weather_snow.png" />
+    <Resource Include="ico\weather_sun.png" />
+    <Resource Include="ico\webcam.png" />
+    <Resource Include="ico\webcam_add.png" />
+    <Resource Include="ico\webcam_delete.png" />
+    <Resource Include="ico\webcam_error.png" />
+    <Resource Include="ico\world.png" />
+    <Resource Include="ico\world_add.png" />
+    <Resource Include="ico\world_delete.png" />
+    <Resource Include="ico\world_edit.png" />
+    <Resource Include="ico\world_go.png" />
+    <Resource Include="ico\world_link.png" />
+    <Resource Include="ico\wrench.png" />
+    <Resource Include="ico\wrench_orange.png" />
+    <Resource Include="ico\xhtml.png" />
+    <Resource Include="ico\xhtml_add.png" />
+    <Resource Include="ico\xhtml_delete.png" />
+    <Resource Include="ico\xhtml_go.png" />
+    <Resource Include="ico\xhtml_valid.png" />
+    <Resource Include="ico\zoom.png" />
+    <Resource Include="ico\zoom_in.png" />
+    <Resource Include="ico\zoom_out.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
