@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
-using Spire.Doc;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,13 +10,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
+using Xceed.Words.NET;
+
 namespace DocMergeUtil
 {
     /// <summary>
@@ -53,17 +47,6 @@ namespace DocMergeUtil
             return OpenCatalogDialog.FileName + "\\Result_" + DateTime.Now.ToString("DD-MM-YYYY_hh-mm-ss");
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Document doc = new Document();
-            doc.LoadFromFile(@"C:\Users\User\source\repos\DocMergeUtil\DocMergeUtil\doc\t2.docx");
-
-            doc.Replace("РАСПИСКА", "MMRRMM", false, false);
-
-            doc.SaveToFile(@"C:\Users\User\source\repos\DocMergeUtil\DocMergeUtil\doc\t2_e.docx");
-            doc.Dispose();
-        }
-
         private void AddClick(object sender, RoutedEventArgs e)
         {
             MacrosList.Add(new MacrosItem());
@@ -90,19 +73,19 @@ namespace DocMergeUtil
 
         private void HandleClick(object sender, RoutedEventArgs e)
         {
-            Directory.CreateDirectory(GetSavePath());
+            var newFolderPath = GetSavePath();
+            Directory.CreateDirectory(newFolderPath);
             FileList.ToList().ForEach(path =>
             {
-                using (Document doc = new Document())
+                using (DocX doc = DocX.Load(path))
                 {
-                    doc.LoadFromFile(path);
 
                     MacrosList.ToList().ForEach(macros =>
                     {
-                        doc.Replace("<" + macros.MacrosName + ">", macros.NewValue, true, false);
+                        doc.ReplaceText("<" + macros.MacrosName + ">", macros.NewValue);
                     });
 
-                    doc.SaveToFile(GetSavePath() + "\\" + Path.GetFileName(path));
+                    doc.SaveAs(newFolderPath + "\\" + Path.GetFileName(path));
                 }
             });
         }
