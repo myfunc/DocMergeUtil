@@ -47,7 +47,7 @@
                         Click="OpenCatalogClick">Открыть каталог</Button>
                 <Button DockPanel.Dock="Bottom"
                         Style="{StaticResource s_btn}"
-                        Click="HandleClick">Обработать</Button>
+                        Click="HandleAsClick">Обработать...</Button>
                 <ListBox Name="CatalogList" 
                          Style="{StaticResource s_list}">
                     <ListBox.ItemTemplate>

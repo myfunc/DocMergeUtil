@@ -25,7 +25,11 @@ namespace DocMergeUtil
         {
             IsFolderPicker = true
         };
-        
+        private CommonOpenFileDialog HandleSaveCatalogDialog = new CommonOpenFileDialog()
+        {
+            IsFolderPicker = true
+        };
+
         public MainWindow()
         {
             InitializeComponent();
@@ -71,10 +75,13 @@ namespace DocMergeUtil
             }
         }
 
-        private void HandleClick(object sender, RoutedEventArgs e)
+        private void HandleAsClick(object sender, RoutedEventArgs e)
         {
-            var newFolderPath = GetSavePath();
-            Directory.CreateDirectory(newFolderPath);
+            if (HandleSaveCatalogDialog.ShowDialog() != CommonFileDialogResult.Ok)
+            {
+                return;
+            }
+            var saveDirectoryPath = HandleSaveCatalogDialog.FileName;
             FileList.ToList().ForEach(path =>
             {
                 using (DocX doc = DocX.Load(path))
@@ -85,7 +92,7 @@ namespace DocMergeUtil
                         doc.ReplaceText("<" + macros.MacrosName + ">", macros.NewValue);
                     });
 
-                    doc.SaveAs(newFolderPath + "\\" + Path.GetFileName(path));
+                    doc.SaveAs(saveDirectoryPath + "\\" + Path.GetFileName(path));
                 }
             });
         }
@@ -112,7 +119,7 @@ namespace DocMergeUtil
 
         private void ExitClick(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }
